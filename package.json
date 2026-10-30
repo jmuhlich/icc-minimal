@@ -1,0 +1,19 @@
+{
+  "name": "icc-minimal",
+  "version": "1.0.0",
+  "description": "",
+  "license": "MIT",
+  "author": "Jeremy Muhlich",
+  "type": "module",
+  "main": "index.ts",
+  "scripts": {
+    "test": "node test.ts"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.14.0",
+    "prettier": "^3.9.10",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.72.1"
+  }
+}
