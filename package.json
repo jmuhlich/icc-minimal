@@ -1,7 +1,7 @@
 {
   "name": "icc-minimal",
   "version": "1.0.0",
-  "description": "",
+  "description": "Minimal ICC profile parser for gamma curve extraction",
   "license": "MIT",
   "author": "Jeremy Muhlich",
   "type": "module",
