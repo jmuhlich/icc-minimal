@@ -87,7 +87,7 @@ class IccParser {
   raw: Map;
   chunk: BufferView;
 
-  constructor(chunk, options = {}, file?) {
+  constructor(chunk) {
     this.chunk = new BufferView(chunk);
   }
 
@@ -123,13 +123,16 @@ class IccParser {
       valueOffset = this.chunk.getUint32(offset + 4);
       valueLength = this.chunk.getUint32(offset + 8);
       ttype = this.chunk.getString(valueOffset, 4);
-      value = this.parseTag(ttype, valueOffset, valueLength);
+      if (valueOffset + valueLength > chunkLength) {
+        throw new Error("Corrupt ICC profile data");
+      }
+      value = this.parseTag(ttype, valueOffset);
       raw.set(code, value);
       offset += 12;
     }
   }
 
-  parseTag(ttype, offset, length) {
+  parseTag(ttype, offset) {
     switch (ttype) {
       case "mluc":
         return this.parseMluc(offset);
@@ -191,7 +194,7 @@ class IccParser {
   translate() {
     const { raw } = this;
     const output = {};
-    for (let [key, val] of raw) {
+    for (const [key, val] of raw) {
       if (!headerAndTagNames.has(key)) {
         throw new Error(`Unsupported ICC tag: ${key}`);
       }
