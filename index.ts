@@ -20,10 +20,10 @@ function uint8ArrayToUtf8String(uint8array) {
 }
 
 class BufferView {
-  // declare dataView: DataView
-  // declare buffer: ArrayBuffer
-  // declare byteOffset: number
-  // declare byteLength: number
+  declare dataView: DataView;
+  declare buffer: ArrayBufferLike;
+  declare byteOffset: number;
+  declare byteLength: number;
 
   constructor(arg: Uint8Array, offset = 0, length?) {
     // Node.js Buffer is also instance of Uint8Array, but small ones are backed
@@ -84,7 +84,7 @@ class BufferView {
 }
 
 class IccParser {
-  raw: Map;
+  raw: Map<number | string, unknown>;
   chunk: BufferView;
 
   constructor(chunk) {
@@ -204,7 +204,7 @@ class IccParser {
   }
 }
 
-const headerAndTagNames = new Map([
+const headerAndTagNames = new Map<number | string, string>([
   [4, "ProfileCMMType"],
   [8, "ProfileVersion"],
   [12, "ProfileClass"],
