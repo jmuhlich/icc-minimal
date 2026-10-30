@@ -269,7 +269,7 @@ function parseS15Fixed16Number(view, offset) {
   return integer + fractional / 65536;
 }
 
-export function parse(content: Uint8Array) {
+export function parseIccProfile(content: Uint8Array) {
   const parser = new IccParser(content);
   return parser.parse();
 }

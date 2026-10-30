@@ -1,4 +1,4 @@
-import { parse } from "./index.ts";
+import { parseIccProfile } from "./index.ts";
 
 const data = new Uint8Array([
   0, 0, 1, 60, 108, 99, 109, 115, 4, 64, 0, 0, 109, 110, 116, 114, 71, 82, 65,
@@ -18,4 +18,4 @@ const data = new Uint8Array([
   112, 97, 114, 97, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0,
 ]);
 
-console.log(parse(data));
+console.log(parseIccProfile(data));
